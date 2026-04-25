@@ -1,4 +1,4 @@
-const DB_NAME = "user_db"
+const DB_NAME = "mydb"
 
 const REG_URL = "/api/reg"
 const CHANGEPASS_URL = "/api/change"
