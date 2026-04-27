@@ -8,7 +8,6 @@ const signin_controller = async (req, res) => {
         username: user,
       }
     )
-    console.log(user, pwd)
     if (!isuser) {
       res.status(400).json({
         message: "invalid username"

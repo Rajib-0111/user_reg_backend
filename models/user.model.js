@@ -32,7 +32,8 @@ user_schema.methods.generateAccessToken = function (){
 user_schema.methods.generateRefreshToken = async function (){
   const refreshtoken = jwttoken.sign({
       _id:this._id,
-      username:this.username
+      username:this.username,
+      dummy:"mydummy"
     },
     process.env.JWT_REFRESHTOKENKEY,
     {

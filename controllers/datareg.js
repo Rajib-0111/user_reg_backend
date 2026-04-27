@@ -19,8 +19,8 @@ const regdata = async (req, res) => {
     }
     return res
     .status(200)
-    .cookie('accesstoken', accesstoken, options)
-    .cookie('refreshtoken', refreshtoken, options)
+    .cookie('Accesstoken', accesstoken, options)
+    .cookie('Refreshtoken', refreshtoken, options)
     .json({message:"user created"})
   }
   catch(err){
