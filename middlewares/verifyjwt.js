@@ -5,14 +5,16 @@ const verifyJWT = async(req, res, next) => {
     const accesstoken = req.cookies.Accesstoken
     if(!accesstoken){
       res.status(400).json({
-        message:"no access token"
+        message:"Provide a token"
       })
     }
+    const verifiedtoken = await jwt.verify(accesstoken, process.env.JWT_ACCESSTOKENKEY)
+    req.user = verifiedtoken._id
     next()
   }
   catch(err){
     return res.status(400).json({
-      message:"Token verify error"
+      message:"Unauthorized token"
     })
   }
 }

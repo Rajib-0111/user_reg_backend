@@ -21,7 +21,6 @@ const signin_controller = async (req, res) => {
       })
     }
     else {
-      console.log(process.env.JWT_ACCESSTOKENKEY)
       const accesstoken = isuser.generateAccessToken()
       const refreshtoken = await isuser.generateRefreshToken()
       const options = {
