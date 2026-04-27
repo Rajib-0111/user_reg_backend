@@ -6,7 +6,7 @@ const signout_controller = async(req, res) => {
     {
       refreshtoken:""
     },
-    {new:true}
+    {returnDocument:'after'}
   )
   if(!user){
     return res.
