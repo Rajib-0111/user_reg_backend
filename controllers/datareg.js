@@ -10,8 +10,18 @@ const regdata = async (req, res) => {
   }
   try{
     const hashedpw = await bcrypt.hash(pwd, SALT_ROUND)
-    await USER.create({username:user, password:hashedpw})
-    return res.status(200).json({message:"user created"})
+    const createduser = await USER.create({username:user, password:hashedpw})
+    const refreshtoken = await createduser.generateRefreshToken()
+    const accesstoken = createduser.generateAccessToken()
+    const options = {
+      httpOnly:true,
+      secure:true
+    }
+    return res
+    .status(200)
+    .cookie('accesstoken', accesstoken, options)
+    .cookie('refreshtoken', refreshtoken, options)
+    .json({message:"user created"})
   }
   catch(err){
     return res.status(500).json({message:"server error"})
